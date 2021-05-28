@@ -1,0 +1,45 @@
+## 94. 二叉树的中序遍历
+链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
+
+给定一个二叉树的根节点 root ，返回它的 中序 遍历。
+
+
+## 思路
+
+二叉树的中序遍历，利用递归思想
+
+深度优先：前、中、后遍历，都是这样，用递归是比较好的方案
+
+前、中、后遍历代码上区别不大
+
+伪代码
+中序遍历：
+```
+def inorder(root:Node):
+	inorder(root.left)
+	print(root.val)
+	inorder(root.right)
+```
+
+## 代码
+
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        def help(root: TreeNode):
+            if root is None:
+                return []
+            help(root.left)
+            res.append(root.val)
+            help(root.right)
+        res = []
+        help(root)
+        return res
+```

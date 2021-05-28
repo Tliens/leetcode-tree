@@ -1,0 +1,39 @@
+## 100. 相同的树
+链接：https://leetcode-cn.com/problems/same-tree/
+
+给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
+
+如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+
+## 思路
+二叉树的遍历，可以使用深度优先，广度优先遍历
+
+这里使用前序遍历
+
+## 代码
+
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if p and q :
+            #都存在时 值不同则不同
+            if p.val != q.val:
+                return False
+            if self.isSameTree(p.left,q.left) == False:
+                return False
+            if self.isSameTree(p.right,q.right) == False:
+                return False
+            return True
+        else:
+            # 都不存在 或者有一方不存在
+            if not p and not q:
+                return True
+            else:
+                return False
+```
